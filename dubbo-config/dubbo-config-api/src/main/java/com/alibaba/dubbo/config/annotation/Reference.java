@@ -17,9 +17,12 @@ package com.alibaba.dubbo.config.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
+import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Reference
@@ -30,6 +33,8 @@ import java.lang.annotation.Target;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.METHOD})
+@Inherited
+@Autowired
 public @interface Reference {
 
     Class<?> interfaceClass() default void.class;
