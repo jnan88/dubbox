@@ -134,6 +134,7 @@
         <commons_pool_version>1.6</commons_pool_version>
 		<commons-lang_version>2.6</commons-lang_version>
         <tomcat_embed_version>8.0.11</tomcat_embed_version>
+		<consul-api.version>1.2.1</consul-api.version>
 		<!-- Log libs -->
 		<!--<slf4j_version>1.6.2</slf4j_version>-->
 		<slf4j_version>1.7.15</slf4j_version>
@@ -516,6 +517,11 @@
                 <groupId>de.ruedigermoeller</groupId>
                 <artifactId>fst</artifactId>
                 <version>${fst_version}</version>
+            </dependency>
+			<dependency>
+                <groupId>com.ecwid.consul</groupId>
+                <artifactId>consul-api</artifactId>
+                <version>${consul-api.version}</version>
             </dependency>
 		</dependencies>
 	</dependencyManagement>
