@@ -78,8 +78,9 @@ Dubbox adds features like RESTful remoting, Kyro/FST serialization, etc to the p
     * 增加原生thrift支持,升级thrift到0.9.3,为避免与dubbo原来的thrift实现命名冲突，新增的原生thrift协议，协议名称改为thrift2(杨俊明)
     * 增加hadoop avro支持(杨俊明)
 * **dubbox-2.8.5**：
-    * 把@service 修改为@DubboService 避免和spring 的注解冲突，
-    *修改@Reference注解 继承 @Autowired注解 解决在spring boot环境下无法注入依赖的问题
+    * 把@service 修改为@DubboService 避免和spring 的注解冲突，（梅心斌）
+    *修改@Reference注解 继承 @Autowired注解 解决在spring boot环境下无法注入依赖的问题（梅心斌）
+    *增加了Consul注册中心的支持（梅心斌）
 
 ## 依赖
 
