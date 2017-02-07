@@ -82,7 +82,7 @@ Dubbox adds features like RESTful remoting, Kyro/FST serialization, etc to the p
     * 把@service 修改为@DubboService 避免和spring 的注解冲突，（梅心斌）
     * 解决在spring boot环境下无法注入依赖的问题（梅心斌）
     * 增加了Consul注册中心的支持（梅心斌）
-    dddd
+
 
 ## 依赖
 
