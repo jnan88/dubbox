@@ -157,8 +157,8 @@
 		<resteasy-jdk-http_version>3.0.14.Final</resteasy-jdk-http_version>
 		<resteasy-jackson-provider_version>3.0.14.Final</resteasy-jackson-provider_version>
 		<resteasy-jaxb-provider_version>3.0.16.Final</resteasy-jaxb-provider_version>
-		<kryo_version>2.24.0</kryo_version>
-		<kryo-serializers_version>0.37</kryo-serializers_version>
+		<kryo-version>4.0.0</kryo-version>
+		<kryo-serializers_version>0.41</kryo-serializers_version>
 		<fst_version>2.44</fst_version>
 		<!-- Build args -->
 		<!--<argline>-server -Xms64m -Xmx64m -XX:PermSize=64m -XX:MaxPermSize=64m</argline> -->
@@ -504,9 +504,9 @@
                 <version>${resteasy-jaxb-provider_version}</version>
             </dependency>
             <dependency>
-                <groupId>com.esotericsoftware.kryo</groupId>
+                <groupId>com.esotericsoftware</groupId>
                 <artifactId>kryo</artifactId>
-                <version>2.24.0</version>
+                <version>${kryo-version}</version>
             </dependency>
             <dependency>
                 <groupId>de.javakaffee</groupId>

@@ -48,6 +48,7 @@ Dubbox adds features like RESTful remoting, Kyro/FST serialization, etc to the p
 
 [Demo应用简单运行指南](http://dangdangdotcom.github.io/dubbox/demo.html)
 
+
 [Dubbox@InfoQ](http://www.infoq.com/cn/news/2014/10/dubbox-open-source) 
 
 [Dubbox Wiki](https://github.com/dangdangdotcom/dubbox/wiki) （由社区志愿者自由编辑的）
@@ -79,8 +80,9 @@ Dubbox adds features like RESTful remoting, Kyro/FST serialization, etc to the p
     * 增加hadoop avro支持(杨俊明)
 * **dubbox-2.8.5**：
     * 把@service 修改为@DubboService 避免和spring 的注解冲突，（梅心斌）
-    * 修改@Reference注解 继承 @Autowired注解 解决在spring boot环境下无法注入依赖的问题（梅心斌）
+    * 解决在spring boot环境下无法注入依赖的问题（梅心斌）
     * 增加了Consul注册中心的支持（梅心斌）
+    dddd
 
 ## 依赖
 
