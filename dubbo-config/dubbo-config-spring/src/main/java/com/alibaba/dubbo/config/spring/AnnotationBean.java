@@ -42,7 +42,9 @@ import com.alibaba.dubbo.common.utils.ConcurrentHashSet;
 import com.alibaba.dubbo.common.utils.ReflectUtils;
 import com.alibaba.dubbo.config.AbstractConfig;
 import com.alibaba.dubbo.config.ApplicationConfig;
+import com.alibaba.dubbo.config.ArgumentConfig;
 import com.alibaba.dubbo.config.ConsumerConfig;
+import com.alibaba.dubbo.config.MethodConfig;
 import com.alibaba.dubbo.config.ModuleConfig;
 import com.alibaba.dubbo.config.MonitorConfig;
 import com.alibaba.dubbo.config.ProtocolConfig;
@@ -50,6 +52,7 @@ import com.alibaba.dubbo.config.ProviderConfig;
 import com.alibaba.dubbo.config.ReferenceConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
 import com.alibaba.dubbo.config.ServiceConfig;
+import com.alibaba.dubbo.config.annotation.MethodReference;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.config.annotation.DubboService;
 
@@ -189,6 +192,46 @@ public class AnnotationBean extends AbstractConfig implements DisposableBean, Be
                     }
                     serviceConfig.setProtocols(protocolConfigs);
                 }
+                //add methodconfig support by meixinbin
+                List<MethodConfig> mconfig = new ArrayList<MethodConfig>();
+                Method[] methods = clazz.getMethods();
+                for (Method method : methods) {
+	                MethodReference methodReference = method.getAnnotation(MethodReference.class);
+	                if(methodReference!=null){
+	                	MethodConfig mc = new MethodConfig();
+	                	mc.setName(method.getName());
+	                	mc.setRetries(methodReference.retries());
+	                	mc.setReturn(methodReference.isReturn());
+	                	mc.setActives(methodReference.actives());
+	                	mc.setAsync(methodReference.async());
+	                	mc.setCache(methodReference.cache());
+	                	mc.setExecutes(methodReference.executes());
+	                	mc.setLoadbalance(methodReference.loadbalance());
+	                	mc.setMock(methodReference.mock());
+	                	mc.setOninvoke(methodReference.oninvoke());
+	                	mc.setTimeout(methodReference.timeout());
+	                	mc.setSticky(methodReference.sticky());
+//	                	mc.setRetry(methodReference.retry());
+	                	mc.setOnthrowMethod(methodReference.onthrowMethod());
+	                	mc.setOninvokeMethod(methodReference.oninvokeMethod());
+	                	mc.setOnreturn(methodReference.onreturn());
+	                	mc.setOnreturnMethod(methodReference.onreturnMethod());
+	                	mc.setOnthrow(methodReference.onthrow());
+	                	Class<?>[] clazzs = method.getParameterTypes();
+	                	List<ArgumentConfig> arguments = new ArrayList<ArgumentConfig>();
+	                	if(clazzs!=null && clazzs.length>0){
+	                		for(int i=0;i<clazzs.length;i++){
+	                			ArgumentConfig ac = new ArgumentConfig();
+		                		ac.setIndex(i);
+		                		ac.setType(clazzs[i].getName());
+		                		arguments.add(ac);
+	                		}
+	                	}
+	                	mc.setArguments(arguments);
+	                	mconfig.add(mc);
+	                }
+                }
+                serviceConfig.setMethods(mconfig);
                 try {
                     serviceConfig.afterPropertiesSet();
                 } catch (RuntimeException e) {
