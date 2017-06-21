@@ -412,12 +412,16 @@ public class ReferenceConfig<T> extends AbstractReferenceConfig {
         Boolean c = check;
         if (c == null && consumer != null) {
             c = consumer.isCheck();
+            logger.info("dubbo service check enabled");
         }
         if (c == null) {
-            c = true; // default true
+            c = false; // default false modify by meixinbin
+            logger.info("dubbo service check is disabled!!!!");
         }
         if (c && ! invoker.isAvailable()) {
-            throw new IllegalStateException("Failed to check the status of the service " + interfaceName + ". No provider available for the service " + (group == null ? "" : group + "/") + interfaceName + (version == null ? "" : ":" + version) + " from the url " + invoker.getUrl() + " to the consumer " + NetUtils.getLocalHost() + " use dubbo version " + Version.getVersion());
+            //这里不能抛出异常，会导致服务无法启动
+//            throw new IllegalStateException("Failed to check the status of the service " + interfaceName + ". No provider available for the service " + (group == null ? "" : group + "/") + interfaceName + (version == null ? "" : ":" + version) + " from the url " + invoker.getUrl() + " to the consumer " + NetUtils.getLocalHost() + " use dubbo version " + Version.getVersion());
+            logger.warn("\"Failed to check the status of the service \" + interfaceName + \". No provider available for the service \" + (group == null ? \"\" : group + \"/\") + interfaceName + (version == null ? \"\" : \":\" + version) + \" from the url \" + invoker.getUrl() + \" to the consumer \" + NetUtils.getLocalHost() + \" use dubbo version \" + Version.getVersion()");
         }
         if (logger.isInfoEnabled()) {
             logger.info("Refer dubbo service " + interfaceClass.getName() + " from url " + invoker.getUrl());

@@ -350,6 +350,19 @@
             </exclusions>
         </dependency>
     </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Nexus Release Repository</name>
+            <url>http://10.0.22.18/repository/dev5-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://10.0.22.18/repository/dev5-snapshots/</url>
+        </snapshotRepository>
+
+    </distributionManagement>
     <build>
         <plugins>
             <plugin>
@@ -424,7 +437,6 @@
                                     <include>com.alibaba:dubbo-rpc-memcached</include>
                                     <include>com.alibaba:dubbo-rpc-redis</include>
                                     <include>com.alibaba:dubbo-rpc-rest</include>
-                                    <!-- <include>com.alibaba:dubbo-rpc-jersey</include> -->
                                     <include>com.alibaba:dubbo-filter-validation</include>
                                     <include>com.alibaba:dubbo-filter-cache</include>
                                     <include>com.alibaba:dubbo-cluster</include>

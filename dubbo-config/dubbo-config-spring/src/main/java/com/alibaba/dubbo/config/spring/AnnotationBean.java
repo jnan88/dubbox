@@ -331,9 +331,13 @@ public class AnnotationBean extends AbstractConfig implements DisposableBean, Be
                     }
                     referenceConfig.setRegistries(registryConfigs);
                 }
-                if (reference.consumer() != null && reference.consumer().length() > 0) {
+                /*if (reference.consumer() != null && reference.consumer().length() > 0) {
                     referenceConfig.setConsumer((ConsumerConfig)applicationContext.getBean(reference.consumer(), ConsumerConfig.class));
-                }
+                }*/
+                /*ConsumerConfig consumer = applicationContext.getBean(ConsumerConfig.class);
+                if(consumer!=null){
+                    referenceConfig.setConsumer(consumer);
+                }*/
                 if (reference.monitor() != null && reference.monitor().length() > 0) {
                     referenceConfig.setMonitor((MonitorConfig)applicationContext.getBean(reference.monitor(), MonitorConfig.class));
                 }

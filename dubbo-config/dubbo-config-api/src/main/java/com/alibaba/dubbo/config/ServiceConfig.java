@@ -311,7 +311,7 @@ public class ServiceConfig<T> extends AbstractServiceConfig {
                             Socket socket = new Socket();
                             try {
                                 SocketAddress addr = new InetSocketAddress(registryURL.getHost(), registryURL.getPort());
-                                socket.connect(addr, 1000);
+                                socket.connect(addr, 3000);
                                 host = socket.getLocalAddress().getHostAddress();
                                 break;
                             } finally {
