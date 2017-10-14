@@ -10,8 +10,8 @@ import java.lang.annotation.*;
 @Target(ElementType.ANNOTATION_TYPE)
 public @interface Parameter {
 
-    String key() default "";
+    String key();
 
-    String value() default "";
+    String value();
 
 }
