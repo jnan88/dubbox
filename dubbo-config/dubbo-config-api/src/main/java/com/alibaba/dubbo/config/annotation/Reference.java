@@ -100,8 +100,6 @@ public @interface Reference {
 
     String[] listener() default {};
 
-    String[] parameters() default {};
-
     String application() default "";
 
     String module() default "";
@@ -114,5 +112,8 @@ public @interface Reference {
 
     String[] registry() default {};
 
-    MethodReference[] methods() default {};
+    Method[] methods() default {};
+
+    Parameter[] parameters() default {};
+
 }
