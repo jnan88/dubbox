@@ -48,7 +48,7 @@ public @interface Reference {
 
     boolean injvm() default false;
 
-    boolean check() default true;
+    boolean check() default false;
 
     boolean init() default false;
 
@@ -78,7 +78,7 @@ public @interface Reference {
 
     String layer() default "";
 
-    int retries() default 0;
+    int retries() default -1;
 
     String loadbalance() default "";
 
@@ -114,4 +114,5 @@ public @interface Reference {
 
     String[] registry() default {};
 
+    MethodReference[] methods() default {};
 }

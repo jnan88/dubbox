@@ -79,7 +79,7 @@ public @interface DubboService {
 
     String layer() default "";
 
-    int retries() default 0;
+    int retries() default -1;
 
     String loadbalance() default "";
 
@@ -115,4 +115,5 @@ public @interface DubboService {
 
     String[] registry() default {};
 
+    MethodReference[] methods() default {};
 }
