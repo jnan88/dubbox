@@ -118,7 +118,14 @@ public abstract class AbstractConfig implements Serializable {
                             value = StringUtils.join((String[]) value, ",");
                         } else if ("parameters".equals(property)) {
                             parameterType = Map.class;
-                            value = CollectionUtils.toStringMap((String[]) value);
+                            com.alibaba.dubbo.config.annotation.Parameter[] params =  (com.alibaba.dubbo.config.annotation.Parameter[]) value;
+                            Map map = new HashMap();
+                            if(params!=null){
+                                for(com.alibaba.dubbo.config.annotation.Parameter param:params){
+                                    map.put(param.key(),param.value());
+                                }
+                            }
+                            value = map;
                         }
                         try {
                             Method setterMethod = getClass().getMethod(setter, new Class<?>[] { parameterType });
