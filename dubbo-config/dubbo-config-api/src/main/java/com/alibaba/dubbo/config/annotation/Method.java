@@ -8,7 +8,7 @@ import java.lang.annotation.*;
 public @interface Method {
 
     //方法名
-    String name();
+    String name() default "";
 
 	// 方法使用线程数限制
     int  executes() default 0;
